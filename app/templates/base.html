@@ -672,6 +672,14 @@
 										<i ng-class="stars[s.guid] ? 'fa fa-star' : 'fa fa-star-o'"></i>
 									</a>
 								</li>
+								<li ng-show="s.canUnread">
+									<form class="form-inline">
+										<label class="checkbox normal" ng-click="$event.stopPropagation()">
+											<input type="checkbox" ng-model="s.Unread" ng-change="markUnread(s)">
+											keep unread
+										</label>
+									</form>
+								</li>
 								<li style="vertical-align: middle">
 									<a target="_blank" ng-href="mailto:?subject={{`{{s.Title | encodeURI}}`}}&body={{`{{s.Link | encodeURI}}`}}">
 										<i class="fa fa-envelope"></i>
@@ -700,14 +708,6 @@
 									<a target="_blank" ng-href="http://www.instapaper.com/hello2?url={{`{{s.Link | encodeURI}}`}}&title={{`{{s.Title | encodeURI}}`}}">
 										<span class="optional-text">save to </span>Instapaper
 									</a>
-								</li>
-								<li ng-show="s.canUnread">
-									<form class="form-inline">
-										<label class="checkbox normal" ng-click="$event.stopPropagation()">
-											<input type="checkbox" ng-model="s.Unread" ng-change="markUnread(s)">
-											keep unread
-										</label>
-									</form>
 								</li>
 							</ul>
 						</div>
